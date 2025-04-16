@@ -1,0 +1,22 @@
+import numpy as np
+import matplotlib.pyplot as plt 
+
+#11_FWR_HWR
+t=np.linspace(0,0.1,1000)
+f=50
+a=5
+ac_signal=np.sin(2*np.pi*f*t)
+half_wave_signal= np.clip(ac_signal,0,None)
+full_wave_signal= np.abs(ac_signal)
+
+#12_clip
+def neg_clip(ip,th):
+    op = np.where(ip<th,th,ip)
+    return op
+t= np.linspace(0,4,100)
+A=5
+th=3
+f=50
+ip = A*np.sin(2*np.pi*f*t)
+op=pos_clip(ip,th)
+plt.axhline(th,color="red")
