@@ -1,0 +1,23 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Constants
+I_s = 1e-12  # Saturation current (A)
+n = 1        # Ideality factor
+V_t = 0.025  # Thermal voltage at room temp (V)
+
+# Voltage range
+V = np.linspace(-0.1, 0.8, 100)
+
+# Diode current using Shockley equation
+I = I_s * (np.exp(V / (n * V_t)) - 1)
+
+# Plotting
+plt.plot(V, I)
+plt.title("Diode V-I Characteristic")
+plt.xlabel("Voltage (V)")
+plt.ylabel("Current (A)")
+plt.grid(True)
+plt.yscale('log')  # Log scale to show exponential behavior
+plt.show()
+
