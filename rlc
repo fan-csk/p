@@ -1,0 +1,35 @@
+import numpy as np
+import matplotlib.pyplot as plt 
+
+R= 100
+L = 0.01
+C = 10e-6
+
+frequencies = np.logspace(1,6,1000)
+omega = 2* np.pi* frequencies
+
+Z_R = R
+Z_L = 1j * omega *L
+Z_C = (1j * omega *C)
+
+Z_total = Z_L+Z_R+Z_C
+
+Z_Mag = np.abs(Z_total)
+Z_Phase = np.angle(Z_total)
+
+plt.figure(figsize =(12,6))
+
+plt.subplot(2,1,1)
+plt.semilogx(frequencies, Z_Mag )
+plt.title("Magnitude Response")
+plt.xlabel("Frequency (Hz)")
+plt.ylabel("Magnitude(dB)")
+plt.grid(True)
+
+
+plt.subplot(2,1,2)
+plt.semilogx(frequencies, Z_Phase )
+plt.title("Phase Response")
+plt.xlabel("Frequency (Hz)")
+plt.ylabel("Phase (Degrees)")
+plt.grid(True)
