@@ -1,0 +1,20 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+beta=100
+
+Vce=np.linspace(0,10,1000)
+
+Ib_values = [10e-6,20e-6,30e-6,40e-6,50e-6]
+for Ib in Ib_values:
+    Ic= beta*Ib*(1-np.exp(-Vce/0.2))
+    plt.plot(Vce,Ic)
+    
+plt.xlabel('Vce (V)')
+plt.ylabel('Ic (A)')
+plt.title('BJT Output Characteristics')
+plt.grid(True)
+plt.legend([f"Ib = {Ib*1e6:.0f} µA" for Ib in Ib_values])
+plt.show()
+
+
